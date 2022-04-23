@@ -3,6 +3,8 @@ package com.pweb.WarInNewWorld.model;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "pwb_cities")
@@ -24,5 +26,12 @@ public class City {
 
     @ManyToMany(mappedBy = "cities")
     private Set<Subscriber> subscribers = new HashSet<>();
+
+    @OneToMany(mappedBy = "city", cascade = CascadeType.PERSIST)
+    private Set<NecessityGoods> necessityGoods = new HashSet<>();
+
+    @ManyToMany(mappedBy = "cities")
+    private Set<News> news = new HashSet<>();
+
 
 }
