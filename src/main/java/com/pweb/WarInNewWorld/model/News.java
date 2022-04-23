@@ -26,6 +26,9 @@ public class News {
     @Column(name  = "is_validated")
     private Boolean isValidated;
 
+    @Column(name  = "file_link")
+    private String fileLink;
+
     @ManyToOne
     @JoinColumn(name = "news_type_id")
     private NewsType newsType;
@@ -116,5 +119,13 @@ public class News {
 
     public void setValidator(User validator) {
         this.validator = validator;
+    }
+
+    public String getFileLink() {
+        return fileLink;
+    }
+
+    public void setFileLink(String fileLink) {
+        this.fileLink = fileLink;
     }
 }
