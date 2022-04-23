@@ -38,4 +38,11 @@ public class News {
     )
     private Set<City> cities = new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User writer;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User validator;
 }

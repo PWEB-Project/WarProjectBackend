@@ -26,4 +26,12 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "review_type_id")
     private NewsType reviewType;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User whom;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User writer;
 }
