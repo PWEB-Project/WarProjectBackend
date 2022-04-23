@@ -1,4 +1,7 @@
 package com.pweb.WarInNewWorld.repository;
 
-public interface BunkerRepository {
+import com.pweb.WarInNewWorld.model.Bunker;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BunkerRepository extends JpaRepository<Bunker, Long> {
 }
