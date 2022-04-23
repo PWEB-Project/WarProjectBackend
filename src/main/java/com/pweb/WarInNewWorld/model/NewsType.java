@@ -17,4 +17,28 @@ public class NewsType {
 
     @OneToMany(mappedBy = "newsType", cascade = CascadeType.PERSIST)
     private Set<News> news = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNewsTypeName() {
+        return newsTypeName;
+    }
+
+    public void setNewsTypeName(String newsTypeName) {
+        this.newsTypeName = newsTypeName;
+    }
+
+    public Set<News> getNews() {
+        return news;
+    }
+
+    public void setNews(Set<News> news) {
+        this.news = news;
+    }
 }

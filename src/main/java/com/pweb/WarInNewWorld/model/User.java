@@ -31,6 +31,70 @@ public class User {
     @OneToMany(mappedBy = "whom", cascade = CascadeType.PERSIST)
     private Set<Review> receivedReviews = new HashSet<>();
 
-    @OneToMany(mappedBy = "writer", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "writerReview", cascade = CascadeType.PERSIST)
     private Set<Review> writtenReviews = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public Boolean getTrusted() {
+        return trusted;
+    }
+
+    public void setTrusted(Boolean trusted) {
+        this.trusted = trusted;
+    }
+
+    public Set<News> getWrittenNews() {
+        return writtenNews;
+    }
+
+    public void setWrittenNews(Set<News> writtenNews) {
+        this.writtenNews = writtenNews;
+    }
+
+    public Set<News> getValidatedNews() {
+        return validatedNews;
+    }
+
+    public void setValidatedNews(Set<News> validatedNews) {
+        this.validatedNews = validatedNews;
+    }
+
+    public Set<Review> getReceivedReviews() {
+        return receivedReviews;
+    }
+
+    public void setReceivedReviews(Set<Review> receivedReviews) {
+        this.receivedReviews = receivedReviews;
+    }
+
+    public Set<Review> getWrittenReviews() {
+        return writtenReviews;
+    }
+
+    public void setWrittenReviews(Set<Review> writtenReviews) {
+        this.writtenReviews = writtenReviews;
+    }
 }

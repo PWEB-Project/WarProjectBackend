@@ -17,4 +17,28 @@ public class GoodsType {
 
     @OneToMany(mappedBy = "goodsType", cascade = CascadeType.PERSIST)
     private Set<NecessityGoods> necessityGoods = new HashSet<>();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getGoodTypeName() {
+        return goodTypeName;
+    }
+
+    public void setGoodTypeName(String goodTypeName) {
+        this.goodTypeName = goodTypeName;
+    }
+
+    public Set<NecessityGoods> getNecessityGoods() {
+        return necessityGoods;
+    }
+
+    public void setNecessityGoods(Set<NecessityGoods> necessityGoods) {
+        this.necessityGoods = necessityGoods;
+    }
 }

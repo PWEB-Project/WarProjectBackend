@@ -22,11 +22,58 @@ public class Bunker {
     @Column(name = "current_capacity")
     private Integer currentCapacity;
 
-    @Column(name = "last_uodate")
-    private Date date;
+    @Column(name = "last_update")
+    private Date lastUpdate;
 
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getMaximCapacity() {
+        return maximCapacity;
+    }
+
+    public void setMaximCapacity(Integer maximCapacity) {
+        this.maximCapacity = maximCapacity;
+    }
+
+    public Integer getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public void setCurrentCapacity(Integer currentCapacity) {
+        this.currentCapacity = currentCapacity;
+    }
+
+    public Date getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Date lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
 }
