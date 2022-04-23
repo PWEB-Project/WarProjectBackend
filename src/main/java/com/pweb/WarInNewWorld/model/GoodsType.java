@@ -1,0 +1,20 @@
+package com.pweb.WarInNewWorld.model;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "pwb_goods_types")
+public class GoodsType {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name  = "goods_type_id")
+    private Long id;
+
+    @Column(name = "goods_type_name")
+    private String goodTypeName;
+
+    @OneToMany(mappedBy = "goodsType", cascade = CascadeType.PERSIST)
+    private Set<NecessityGoods> necessityGoods = new HashSet<>();
+}
