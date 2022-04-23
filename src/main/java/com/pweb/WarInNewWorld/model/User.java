@@ -19,6 +19,9 @@ public class User {
     @JoinColumn(name = "user_type_id")
     private UserType userType;
 
+    @Column(name = "trusted")
+    private Boolean trusted;
+
     @OneToMany(mappedBy = "writer", cascade = CascadeType.PERSIST)
     private Set<News> writtenNews = new HashSet<>();
 
