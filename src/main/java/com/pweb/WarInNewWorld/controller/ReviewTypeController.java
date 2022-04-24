@@ -7,10 +7,7 @@ import com.pweb.WarInNewWorld.service.ReviewTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/review-type")
@@ -24,6 +21,17 @@ public class ReviewTypeController {
             reviewTypeService.addReviewType(reviewType);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);
 
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping(path = "/admin/delete-review-type/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<?> deleteSubject(@PathVariable Long id) {
+        try {
+            reviewTypeService.deleteReviewType(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Deleted successfully");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

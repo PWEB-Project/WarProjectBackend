@@ -16,9 +16,8 @@ public class BunkerService {
         bunkerRepository.save(bunker);
     }
 
-
-    public void deleteBunker(Bunker bunker){
-        bunkerRepository.delete(bunker);
+    public void deleteBunker(Long bunkerId){
+        bunkerRepository.deleteById(bunkerId);
     }
 
 }

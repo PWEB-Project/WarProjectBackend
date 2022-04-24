@@ -17,4 +17,9 @@ public class GoodsTypeService {
     {
         goodsTypeRepository.save(goodsType);
     }
+
+    public void deleteGoodsType(Long goodsTypeId)
+    {
+        goodsTypeRepository.deleteById(goodsTypeId);
+    }
 }

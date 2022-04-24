@@ -16,4 +16,9 @@ public class NecessityGoodsService {
     {
         necessityGoodsRepository.save(necessityGoods);
     }
+
+    public void deleteNecessityGoods(Long necessityGoodsId)
+    {
+        necessityGoodsRepository.deleteById(necessityGoodsId);
+    }
 }

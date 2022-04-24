@@ -15,4 +15,8 @@ public class ReviewTypeService {
     public void addReviewType(ReviewType reviewType) {
         reviewTypeRepository.save(reviewType);
     }
+
+    public void deleteReviewType(Long reviewTypeId) {
+        reviewTypeRepository.deleteById(reviewTypeId);
+    }
 }

@@ -22,7 +22,7 @@ public class City {
     @OneToMany(mappedBy = "city", cascade = CascadeType.PERSIST)
     private Set<Bunker> bunkers = new HashSet<>();
 
-    @ManyToMany(mappedBy = "cities")
+    @ManyToMany(mappedBy = "cities", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH})
     private Set<Subscriber> subscribers = new HashSet<>();
 
     @OneToMany(mappedBy = "city", cascade = CascadeType.PERSIST)

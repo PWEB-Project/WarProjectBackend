@@ -17,4 +17,9 @@ public class NewsTypeService {
     public void addNewsType(NewsType newsType){
         newsTypeRepository.save(newsType);
     }
+
+    public void deleteNewsType(Long newsTypeId)
+    {
+        newsTypeRepository.deleteById(newsTypeId);
+    }
 }

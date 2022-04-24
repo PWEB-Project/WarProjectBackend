@@ -23,6 +23,11 @@ public class NewsService {
         newsRepository.save(news);
     }
 
+    public void deleteNews(Long newsId)
+    {
+        newsRepository.deleteById(newsId);
+    }
+
     public List<NewsDefaultView> getDefaultNews(){
         return newsRepository.findAllBy();
     }

@@ -17,4 +17,8 @@ public class UserTypeService {
     {
         userTypeRepository.save(userType);
     }
+
+    public void deleteUserType(Long userTypeId) {
+        userTypeRepository.deleteById(userTypeId);
+    }
 }

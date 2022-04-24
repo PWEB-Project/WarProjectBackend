@@ -16,4 +16,8 @@ public class SubscriberService {
     {
         subscriberRepository.save(subscriber);
     }
+
+    public void deleteSubscriber(Long subscriberId) {
+        subscriberRepository.deleteById(subscriberId);
+    }
 }
