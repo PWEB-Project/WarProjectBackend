@@ -1,4 +1,4 @@
 package com.pweb.WarInNewWorld.projection;
 
-public class BunkerView {
+public interface BunkerView {
 }
