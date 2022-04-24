@@ -28,9 +28,6 @@ public class User {
     @OneToMany(mappedBy = "validator", cascade = CascadeType.PERSIST)
     private Set<News> validatedNews = new HashSet<>();
 
-    @OneToMany(mappedBy = "whom", cascade = CascadeType.PERSIST)
-    private Set<Review> receivedReviews = new HashSet<>();
-
     @OneToMany(mappedBy = "writerReview", cascade = CascadeType.PERSIST)
     private Set<Review> writtenReviews = new HashSet<>();
 
@@ -80,14 +77,6 @@ public class User {
 
     public void setValidatedNews(Set<News> validatedNews) {
         this.validatedNews = validatedNews;
-    }
-
-    public Set<Review> getReceivedReviews() {
-        return receivedReviews;
-    }
-
-    public void setReceivedReviews(Set<Review> receivedReviews) {
-        this.receivedReviews = receivedReviews;
     }
 
     public Set<Review> getWrittenReviews() {

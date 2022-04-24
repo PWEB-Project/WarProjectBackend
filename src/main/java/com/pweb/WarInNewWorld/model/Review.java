@@ -29,7 +29,7 @@ public class Review {
 
     @ManyToOne
     @JoinColumn(name = "whom_id", insertable = false,updatable = false)
-    private User whom;
+    private News whom;
 
     @ManyToOne
     @JoinColumn(name = "writer_id", insertable = false,updatable = false)
@@ -83,11 +83,11 @@ public class Review {
         this.reviewType = reviewType;
     }
 
-    public User getWhom() {
+    public News getWhom() {
         return whom;
     }
 
-    public void setWhom(User whom) {
+    public void setWhom(News whom) {
         this.whom = whom;
     }
 

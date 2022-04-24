@@ -49,6 +49,10 @@ public class News {
     @JoinColumn(name = "validator_id", insertable = false,updatable = false)
     private User validator;
 
+    @OneToMany(mappedBy = "whom", cascade = CascadeType.PERSIST)
+    private Set<Review> receivedReviews = new HashSet<>();
+
+
     public Long getId() {
         return id;
     }
@@ -115,6 +119,14 @@ public class News {
 
     public User getValidator() {
         return validator;
+    }
+
+    public Set<Review> getReceivedReviews() {
+        return receivedReviews;
+    }
+
+    public void setReceivedReviews(Set<Review> receivedReviews) {
+        this.receivedReviews = receivedReviews;
     }
 
     public void setValidator(User validator) {
