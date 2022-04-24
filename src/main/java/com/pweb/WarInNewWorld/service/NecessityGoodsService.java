@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.service;
 
+import com.pweb.WarInNewWorld.model.NecessityGoods;
 import com.pweb.WarInNewWorld.repository.NecessityGoodsRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,10 @@ public class NecessityGoodsService {
 
     public NecessityGoodsService(NecessityGoodsRepository necessityGoodsRepository) {
         this.necessityGoodsRepository = necessityGoodsRepository;
+    }
+
+    public void addNecessityGoods(NecessityGoods necessityGoods)
+    {
+        necessityGoodsRepository.save(necessityGoods);
     }
 }

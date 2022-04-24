@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.service;
 
+import com.pweb.WarInNewWorld.model.Review;
 import com.pweb.WarInNewWorld.repository.ReviewRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,10 @@ public class ReviewService {
 
     public ReviewService(ReviewRepository reviewRepository) {
         this.reviewRepository = reviewRepository;
+    }
+
+    public void addReview(Review review)
+    {
+        reviewRepository.save(review);
     }
 }

@@ -19,10 +19,10 @@ public class NecessityGoods {
     private String address;
 
     @Column(name  = "maxim_capacity")
-    private String maximCapacity;
+    private Integer maximCapacity;
 
     @Column(name  = "current_capacity")
-    private String currentCapacity;
+    private Integer currentCapacity;
 
     @Column(name  = "last_update")
     private Date lastUpdate;
@@ -55,19 +55,19 @@ public class NecessityGoods {
         this.address = address;
     }
 
-    public String getMaximCapacity() {
+    public Integer getMaximCapacity() {
         return maximCapacity;
     }
 
-    public void setMaximCapacity(String maximCapacity) {
+    public void setMaximCapacity(Integer maximCapacity) {
         this.maximCapacity = maximCapacity;
     }
 
-    public String getCurrentCapacity() {
+    public Integer getCurrentCapacity() {
         return currentCapacity;
     }
 
-    public void setCurrentCapacity(String currentCapacity) {
+    public void setCurrentCapacity(Integer currentCapacity) {
         this.currentCapacity = currentCapacity;
     }
 

@@ -1,6 +1,7 @@
 package com.pweb.WarInNewWorld.service;
 
 import com.pweb.WarInNewWorld.model.City;
+import com.pweb.WarInNewWorld.model.News;
 import com.pweb.WarInNewWorld.model.NewsType;
 import com.pweb.WarInNewWorld.projection.NewsDefaultView;
 import com.pweb.WarInNewWorld.repository.NewsRepository;
@@ -11,18 +12,24 @@ import java.util.Set;
 
 @Service
 public class NewsService {
-    private NewsRepository newsRepository;
+    private final NewsRepository newsRepository;
 
     public NewsService(NewsRepository newsRepository) {
         this.newsRepository = newsRepository;
     }
 
+    public void addNews(News news)
+    {
+        newsRepository.save(news);
+    }
 
     public List<NewsDefaultView> getDefaultNews(){
         return newsRepository.findAllBy();
     }
 
-    public List<NewsDefaultView> getDefaultNewsByCitiesIsValidatedAndNewsType(Set<City> cities, NewsType newsType){
-        return newsRepository.findAllByCitiesAndIsValidatedAndNewsType(cities, true, newsType);
+    public List<NewsDefaultView> getDefaultNewsByCitiesIsValidatedAndNewsType(List<City> cities, NewsType newsType){
+         newsRepository.findAllByCitiesInAndIsValidatedAndNewsType(cities, true, newsType);
+//        return newsRepository.findAllBy();
+        return null;
     }
 }

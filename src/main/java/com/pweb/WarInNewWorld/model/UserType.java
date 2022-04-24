@@ -15,7 +15,7 @@ public class UserType {
     @Column(name = "type_name")
     private String name;
 
-    @OneToMany(mappedBy = "userType")
+    @OneToMany(mappedBy = "userType", cascade = CascadeType.PERSIST)
     private Set<User> users = new HashSet<>();
 
     public Long getId() {

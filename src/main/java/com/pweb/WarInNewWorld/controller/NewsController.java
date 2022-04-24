@@ -21,7 +21,7 @@ public class NewsController {
     NewsService newsService;
 
     @PostMapping(path = "/get-news-cities")
-    List<NewsDefaultView> getNews(@RequestBody Set<City> cities, @RequestBody NewsType newsType){
+    List<NewsDefaultView> getNews(@RequestBody List<City> cities, @RequestBody NewsType newsType){
         return newsService.getDefaultNewsByCitiesIsValidatedAndNewsType(cities, newsType);
     }
 

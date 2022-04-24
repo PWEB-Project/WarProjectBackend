@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.service;
 
+import com.pweb.WarInNewWorld.model.Country;
 import com.pweb.WarInNewWorld.repository.CountryRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,5 +10,10 @@ public class CountryService {
 
     public CountryService(CountryRepository countryRepository) {
         this.countryRepository = countryRepository;
+    }
+
+    public void addCountry(Country country)
+    {
+        countryRepository.save(country);
     }
 }
