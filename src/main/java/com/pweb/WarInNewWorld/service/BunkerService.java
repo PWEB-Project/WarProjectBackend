@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.service;
 
+import com.pweb.WarInNewWorld.model.Bunker;
 import com.pweb.WarInNewWorld.repository.BunkerRepository;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,15 @@ public class BunkerService {
 
     public BunkerService(BunkerRepository bunkerRepository) {
         this.bunkerRepository = bunkerRepository;
+    }
+
+    public void addBunker(Bunker bunker){
+        bunkerRepository.save(bunker);
+    }
+
+
+    public void deleteBunker(Bunker bunker){
+        bunkerRepository.delete(bunker);
     }
 
 }
