@@ -1,7 +1,7 @@
 package com.pweb.WarInNewWorld.controller;
 
-import com.pweb.WarInNewWorld.model.Bunker;
-import com.pweb.WarInNewWorld.service.BunkerService;
+import com.pweb.WarInNewWorld.model.GoodsType;
+import com.pweb.WarInNewWorld.service.GoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="/bunker")
-public class BunkerController {
+@RequestMapping(path = "/goods-type")
+public class GoodsTypeController {
     @Autowired
-    BunkerService bunkerService;
+    GoodsTypeService goodsTypeService;
 
     @PostMapping(path = "/admin/add-bunker")
-    public ResponseEntity<?> addUser(@RequestBody Bunker bunker) {
+    public ResponseEntity<?> addUser(@RequestBody GoodsType goodsType) {
         try {
-            bunkerService.addBunker(bunker);
+            goodsTypeService.addGoodsType(goodsType);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);
 
         } catch (Exception e) {
