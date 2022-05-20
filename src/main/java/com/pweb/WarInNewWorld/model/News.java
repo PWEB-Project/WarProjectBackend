@@ -34,7 +34,7 @@ public class News {
     private NewsType newsType;
 
     @Column(name = "pwb_news_county")
-    private Integer county_ids;
+    private Integer countyId;
 
     @ManyToOne
     @JoinColumn(name = "writer_id", insertable = false,updatable = false)
@@ -128,11 +128,11 @@ public class News {
         this.fileLink = fileLink;
     }
 
-    public Integer getCounty_ids() {
-        return county_ids;
+    public Integer getCountyId() {
+        return countyId;
     }
 
-    public void setCounty_ids(Integer county_ids) {
-        this.county_ids = county_ids;
+    public void setCountyIds(Integer countyId) {
+        this.countyId = countyId;
     }
 }

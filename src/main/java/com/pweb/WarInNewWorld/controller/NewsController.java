@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.controller;
 
+import com.pweb.WarInNewWorld.dto.CountyTypesDTO;
 import com.pweb.WarInNewWorld.model.News;
 import com.pweb.WarInNewWorld.model.NewsType;
 import com.pweb.WarInNewWorld.projection.NewsDefaultView;
@@ -39,12 +40,12 @@ public class NewsController {
         }
     }
 
-//    @PostMapping(path = "/get-news-cities")
-//    List<NewsDefaultView> getNews(@RequestBody List<City> cities, @RequestBody NewsType newsType){
-//        return newsService.getDefaultNewsByCitiesIsValidatedAndNewsType(cities, newsType);
-//    }
+    @PostMapping(path = "/get-news-by-county-and-types")
+    List<NewsDefaultView> getNews(@RequestBody CountyTypesDTO countyTypesDTO){
+        return newsService.getDefaultNewsByCitiesIsValidatedAndNewsType(countyTypesDTO.getCountyId(), countyTypesDTO.getNewsTypeId());
+    }
 
-    @PostMapping(path = "/get-news-all")
+    @GetMapping(path = "/get-news-all")
     List<NewsDefaultView> getNewsAll(){
         return newsService.getDefaultNews();
     }
