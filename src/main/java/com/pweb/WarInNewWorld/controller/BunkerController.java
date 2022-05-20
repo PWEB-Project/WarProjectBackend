@@ -5,7 +5,6 @@ import com.pweb.WarInNewWorld.dto.convertor.BunkerConvertor;
 import com.pweb.WarInNewWorld.model.Bunker;
 import com.pweb.WarInNewWorld.projection.BunkerView;
 import com.pweb.WarInNewWorld.service.BunkerService;
-import com.pweb.WarInNewWorld.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,7 +44,7 @@ public class BunkerController {
     }
 
     @GetMapping(path = "/admin/get-bunkers-by-city-id/{id}")
-    public List<BunkerView> getBunkersByCityId(@PathVariable Long id){
+    public List<BunkerView> getBunkersByCityId(@PathVariable Integer id){
         List<BunkerView> bunkerViews = new ArrayList<>();
 
         bunkerViews = bunkerService.getAllBunkerByCityId(id);
@@ -58,7 +57,7 @@ public class BunkerController {
         Bunker bunker = BunkerConvertor.convertToEntity(bunkerDTO);
         Bunker oldBunker = bunkerService.getBunkerById(bunker.getId());
         bunker.setLastUpdate(new Date(System.currentTimeMillis()));
-        bunker.setCity(oldBunker.getCity());
+        bunker.setCityId(oldBunker.getCityId());
 
         bunkerService.saveBunker(bunker);
     }

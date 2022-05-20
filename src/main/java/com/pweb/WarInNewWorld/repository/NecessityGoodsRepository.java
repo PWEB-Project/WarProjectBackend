@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface NecessityGoodsRepository extends JpaRepository<NecessityGoods, Long> {
-    List<NecessityGoodsView> findNecessityGoodsByCity_Id(Long cityId);
+    List<NecessityGoodsView> findNecessityGoodsByCityId(Integer cityId);
 
 }

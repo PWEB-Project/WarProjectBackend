@@ -11,9 +11,8 @@ public class NecessityGoods {
     @Column(name  = "necessity_good_id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @Column(name = "city_id")
+    private Integer cityId;
 
     @Column(name  = "address")
     private String address;
@@ -37,14 +36,6 @@ public class NecessityGoods {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City city) {
-        this.city = city;
     }
 
     public String getAddress() {
@@ -85,5 +76,13 @@ public class NecessityGoods {
 
     public void setGoodsType(GoodsType goodsType) {
         this.goodsType = goodsType;
+    }
+
+    public Integer getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 }

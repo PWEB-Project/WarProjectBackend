@@ -1,16 +1,11 @@
 package com.pweb.WarInNewWorld.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pweb.WarInNewWorld.dto.CountriesDTO;
 import com.pweb.WarInNewWorld.dto.CountryDTO;
-import com.pweb.WarInNewWorld.projection.CountryView;
-import com.pweb.WarInNewWorld.service.CountryService;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,8 +20,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/country")
 public class CountryController {
-    @Autowired
-    CountryService countryService;
 
     @GetMapping(path = "/getCountries")
     List<CountryDTO> countryViews() throws IOException, InterruptedException {

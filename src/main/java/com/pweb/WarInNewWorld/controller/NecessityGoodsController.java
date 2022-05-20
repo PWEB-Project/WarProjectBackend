@@ -46,7 +46,7 @@ public class NecessityGoodsController {
     }
 
     @GetMapping(path = "/admin/get-necessity-goods-by-city-id/{id}")
-    public List<NecessityGoodsView> getNecessityGoodsByCityId(@PathVariable Long id){
+    public List<NecessityGoodsView> getNecessityGoodsByCityId(@PathVariable Integer id){
         List<NecessityGoodsView> necessityGoodsViews = new ArrayList<>();
 
         necessityGoodsViews = necessityGoodsService.getAllNecessityGoodsByCityId(id);

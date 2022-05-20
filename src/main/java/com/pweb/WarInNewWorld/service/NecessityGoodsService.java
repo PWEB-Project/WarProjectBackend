@@ -3,6 +3,7 @@ package com.pweb.WarInNewWorld.service;
 import com.pweb.WarInNewWorld.model.NecessityGoods;
 import com.pweb.WarInNewWorld.projection.NecessityGoodsView;
 import com.pweb.WarInNewWorld.repository.NecessityGoodsRepository;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +26,5 @@ public class NecessityGoodsService {
         necessityGoodsRepository.deleteById(necessityGoodsId);
     }
 
-    public List<NecessityGoodsView> getAllNecessityGoodsByCityId(Long cityId) { return necessityGoodsRepository.findNecessityGoodsByCity_Id(cityId); }
+    public List<NecessityGoodsView> getAllNecessityGoodsByCityId(Integer cityId) { return necessityGoodsRepository.findNecessityGoodsByCityId(cityId); }
 }

@@ -1,9 +1,7 @@
 package com.pweb.WarInNewWorld.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pweb.WarInNewWorld.dto.CountryDTO;
 import com.pweb.WarInNewWorld.dto.CountyDTO;
-import com.pweb.WarInNewWorld.service.CountyService;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +18,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/county")
 public class CountyController {
-    @Autowired
-    CountyService countyService;
 
     @GetMapping(path = "/getCounties/{iso}")
     List<CountyDTO> countyViews(@PathVariable String iso) throws IOException, InterruptedException {

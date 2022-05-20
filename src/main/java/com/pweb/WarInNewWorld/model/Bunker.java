@@ -2,8 +2,6 @@ package com.pweb.WarInNewWorld.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "pwb_bunkers")
@@ -25,9 +23,8 @@ public class Bunker {
     @Column(name = "last_update")
     private Date lastUpdate;
 
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @Column(name = "city_id")
+    private Integer cityId;
 
     public Long getId() {
         return id;
@@ -69,11 +66,11 @@ public class Bunker {
         this.lastUpdate = lastUpdate;
     }
 
-    public City getCity() {
-        return city;
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 }
