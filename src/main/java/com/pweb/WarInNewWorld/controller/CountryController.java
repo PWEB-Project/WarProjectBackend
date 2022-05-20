@@ -9,9 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URI;
@@ -27,7 +25,7 @@ public class CountryController {
     @Autowired
     CountryService countryService;
 
-    @PostMapping(path = "/getCountries")
+    @GetMapping(path = "/getCountries")
     List<CountryDTO> countryViews() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 
