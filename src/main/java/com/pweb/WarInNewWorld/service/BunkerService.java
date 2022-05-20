@@ -25,4 +25,7 @@ public class BunkerService {
 
     public List<BunkerView> getAllBunkerByCityId(Long cityId) { return bunkerRepository.findBunkerByCity_Id(cityId); }
 
+    public void saveBunker(Bunker bunker) { bunkerRepository.save(bunker); }
+
+    public Bunker getBunkerById(Long id) { return bunkerRepository.getById(id); };
 }
