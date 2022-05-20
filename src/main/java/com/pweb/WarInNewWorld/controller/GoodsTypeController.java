@@ -1,11 +1,16 @@
 package com.pweb.WarInNewWorld.controller;
 
 import com.pweb.WarInNewWorld.model.GoodsType;
+import com.pweb.WarInNewWorld.projection.GoodsTypeView;
+import com.pweb.WarInNewWorld.projection.NecessityGoodsView;
 import com.pweb.WarInNewWorld.service.GoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(path = "/goods-type")
@@ -33,5 +38,13 @@ public class GoodsTypeController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
+    }
+
+    @GetMapping(path = "/admin/get-goods-type")
+    public List<GoodsTypeView> getGoodsType(){
+        List<GoodsTypeView> goodsTypeViews = new ArrayList<>();
+
+        goodsTypeViews = goodsTypeService.getAllGoodsType();
+        return goodsTypeViews;
     }
 }

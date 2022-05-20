@@ -1,8 +1,12 @@
 package com.pweb.WarInNewWorld.service;
 
 import com.pweb.WarInNewWorld.model.GoodsType;
+import com.pweb.WarInNewWorld.projection.BunkerView;
+import com.pweb.WarInNewWorld.projection.GoodsTypeView;
 import com.pweb.WarInNewWorld.repository.GoodsTypeRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GoodsTypeService {
@@ -22,4 +26,7 @@ public class GoodsTypeService {
     {
         goodsTypeRepository.deleteById(goodsTypeId);
     }
+
+    public List<GoodsTypeView> getAllGoodsType() { return goodsTypeRepository.findAllBy(); }
+
 }
