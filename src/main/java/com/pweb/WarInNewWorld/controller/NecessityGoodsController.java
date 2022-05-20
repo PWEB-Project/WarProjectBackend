@@ -1,7 +1,9 @@
 package com.pweb.WarInNewWorld.controller;
 
 import com.pweb.WarInNewWorld.dto.BunkerDTO;
+import com.pweb.WarInNewWorld.dto.NecessityGoodsDTO;
 import com.pweb.WarInNewWorld.dto.convertor.BunkerConvertor;
+import com.pweb.WarInNewWorld.dto.convertor.NecessityGoodsConvertor;
 import com.pweb.WarInNewWorld.model.Bunker;
 import com.pweb.WarInNewWorld.model.NecessityGoods;
 import com.pweb.WarInNewWorld.projection.BunkerView;
@@ -53,14 +55,14 @@ public class NecessityGoodsController {
         return necessityGoodsViews;
     }
 
-//    @PutMapping(path = "/edit")
-//    @ResponseStatus(HttpStatus.OK)
-//    public void editNecessityGoods(NecessityGoodsDTO necessityGoodsDTO) throws ParseException {
-//        NecessityGoods necessityGoods = NecessityGoodsConvertor.convertToEntity(necessityGoodsDTO);
-//        NecessityGoods oldNecessityGoods = NecessityGoodsService.getBunkerById(necessityGoods.getId());
-//        necessityGoods.setLastUpdate(new Date(System.currentTimeMillis()));
-//        necessityGoods.setCity(oldNecessityGoods.getCity());
-//
-//        necessityGoodsService.saveBunker(necessityGoods);
-//    }
+    @PutMapping(path = "/edit")
+    @ResponseStatus(HttpStatus.OK)
+    public void editNecessityGoods(NecessityGoodsDTO necessityGoodsDTO) throws ParseException {
+        NecessityGoods necessityGoods = NecessityGoodsConvertor.convertToEntity(necessityGoodsDTO);
+        NecessityGoods oldNecessityGoods = necessityGoodsService.getNecessityGoodsById(necessityGoods.getId());
+        necessityGoods.setLastUpdate(new Date(System.currentTimeMillis()));
+        necessityGoods.setCityId(oldNecessityGoods.getCityId());
+
+        necessityGoodsService.saveNecessityGoods(necessityGoods);
+    }
 }

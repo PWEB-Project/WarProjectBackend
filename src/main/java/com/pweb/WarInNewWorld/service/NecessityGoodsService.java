@@ -1,5 +1,7 @@
 package com.pweb.WarInNewWorld.service;
 
+import com.pweb.WarInNewWorld.dto.NecessityGoodsDTO;
+import com.pweb.WarInNewWorld.model.Bunker;
 import com.pweb.WarInNewWorld.model.NecessityGoods;
 import com.pweb.WarInNewWorld.projection.NecessityGoodsView;
 import com.pweb.WarInNewWorld.repository.NecessityGoodsRepository;
@@ -27,4 +29,8 @@ public class NecessityGoodsService {
     }
 
     public List<NecessityGoodsView> getAllNecessityGoodsByCityId(Integer cityId) { return necessityGoodsRepository.findNecessityGoodsByCityId(cityId); }
+
+    public NecessityGoods getNecessityGoodsById(Long id) { return necessityGoodsRepository.getById(id); }
+
+    public void saveNecessityGoods(NecessityGoods necessityGoods) { necessityGoodsRepository.save(necessityGoods); }
 }

@@ -10,4 +10,5 @@ public interface NecessityGoodsView {
     Integer getMaximCapacity();
     Integer getCurrentCapacity();
     Date getLastUpdate();
+    GoodsTypeView getGoodsType();
 }
