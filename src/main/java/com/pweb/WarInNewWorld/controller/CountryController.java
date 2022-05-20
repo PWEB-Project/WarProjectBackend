@@ -40,11 +40,8 @@ public class CountryController {
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(response.body());
-
         try {
             JSONArray responseJSON = new JSONArray(response.body());
-            System.out.println(responseJSON);
 
             List<CountryDTO> countryDTOS = new ArrayList<>();
             for (int i = 0; i < responseJSON.length(); i++){

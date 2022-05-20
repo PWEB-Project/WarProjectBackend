@@ -19,6 +19,17 @@ public class County {
     @Column(name = "county_name")
     private String countyName;
 
+    @Column(name = "county_iso")
+    private String countyIso;
+
+    public String getCountyIso() {
+        return countyIso;
+    }
+
+    public void setCountyIso(String countyIso) {
+        this.countyIso = countyIso;
+    }
+
     @OneToMany(mappedBy = "county", cascade = CascadeType.PERSIST)
     private Set<City> cities = new HashSet<>();
 
