@@ -15,6 +15,9 @@ public class Country {
     @Column(name = "country_name")
     private String countryName;
 
+    @Column(name = "country_iso")
+    private String countryIso;
+
     @OneToMany(mappedBy = "country", cascade = CascadeType.PERSIST)
     private Set<County> counties = new HashSet<>();
 
@@ -32,6 +35,14 @@ public class Country {
 
     public void setCountryName(String countryName) {
         this.countryName = countryName;
+    }
+
+    public String getCountryIso() {
+        return countryIso;
+    }
+
+    public void setCountryIso(String countryIso) {
+        this.countryIso = countryIso;
     }
 
     public Set<County> getCounties() {
