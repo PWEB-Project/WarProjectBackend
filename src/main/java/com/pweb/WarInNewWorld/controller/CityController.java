@@ -2,8 +2,6 @@ package com.pweb.WarInNewWorld.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pweb.WarInNewWorld.dto.CityDTO;
-import com.pweb.WarInNewWorld.dto.CountyDTO;
-import com.pweb.WarInNewWorld.service.CityService;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +21,6 @@ import java.util.List;
 @RestController
 @RequestMapping(path="/city")
 public class CityController {
-    @Autowired
-    CityService cityService;
 
     @GetMapping(path = "/getCities/{cIso}/{sIso}")
     List<CityDTO> cityViews(@PathVariable String cIso, @PathVariable String sIso) throws IOException, InterruptedException {

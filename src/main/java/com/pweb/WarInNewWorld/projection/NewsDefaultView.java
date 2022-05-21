@@ -6,7 +6,7 @@ import java.util.List;
 public interface NewsDefaultView {
     Long getId();
     Date getPublicationDate();
-    List<CityView> getCities();
+    Integer getCountyId();
     String getBody();
     String getTitle();
     UserNewsView getWriter();

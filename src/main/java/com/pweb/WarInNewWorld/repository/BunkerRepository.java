@@ -8,6 +8,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BunkerRepository extends JpaRepository<Bunker, Long> {
-    List<BunkerView> findBunkerByCity_Id(Long cityId);
-//    Bunker find(Long id);
+    List<BunkerView> findBunkerByCityId(Integer cityId);
 }

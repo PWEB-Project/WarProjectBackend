@@ -33,13 +33,8 @@ public class News {
     @JoinColumn(name = "news_type_id")
     private NewsType newsType;
 
-    @ManyToMany
-    @JoinTable(
-            name = "pwb_news_cities",
-            joinColumns = { @JoinColumn(name = "news_id") },
-            inverseJoinColumns = { @JoinColumn(name = "city_id") }
-    )
-    private Set<City> cities = new HashSet<>();
+    @Column(name = "pwb_news_county")
+    private Integer countyId;
 
     @ManyToOne
     @JoinColumn(name = "writer_id", insertable = false,updatable = false)
@@ -101,14 +96,6 @@ public class News {
         this.newsType = newsType;
     }
 
-    public Set<City> getCities() {
-        return cities;
-    }
-
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
-    }
-
     public User getWriter() {
         return writer;
     }
@@ -139,5 +126,13 @@ public class News {
 
     public void setFileLink(String fileLink) {
         this.fileLink = fileLink;
+    }
+
+    public Integer getCountyId() {
+        return countyId;
+    }
+
+    public void setCountyIds(Integer countyId) {
+        this.countyId = countyId;
     }
 }

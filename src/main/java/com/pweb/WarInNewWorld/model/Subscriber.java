@@ -15,13 +15,8 @@ public class Subscriber {
     @Column(name = "email")
     private String email;
 
-    @ManyToMany
-    @JoinTable(
-            name = "pwb_subscribers_cities",
-            joinColumns = { @JoinColumn(name = "subscriber_id") },
-            inverseJoinColumns = { @JoinColumn(name = "city_id") }
-    )
-    private Set<City> cities = new HashSet<>();
+    @Column(name = "pwb_subscribers_county")
+    private Integer county_id;
 
     public Long getId() {
         return id;
@@ -39,11 +34,11 @@ public class Subscriber {
         this.email = email;
     }
 
-    public Set<City> getCities() {
-        return cities;
+    public Integer getCounty_id() {
+        return county_id;
     }
 
-    public void setCities(Set<City> cities) {
-        this.cities = cities;
+    public void setCounty_id(Integer county_id) {
+        this.county_id = county_id;
     }
 }

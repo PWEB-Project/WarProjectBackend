@@ -23,7 +23,7 @@ public class BunkerService {
         bunkerRepository.deleteById(bunkerId);
     }
 
-    public List<BunkerView> getAllBunkerByCityId(Long cityId) { return bunkerRepository.findBunkerByCity_Id(cityId); }
+    public List<BunkerView> getAllBunkerByCityId(Integer cityId) { return bunkerRepository.findBunkerByCityId(cityId); }
 
     public void saveBunker(Bunker bunker) { bunkerRepository.save(bunker); }
 
