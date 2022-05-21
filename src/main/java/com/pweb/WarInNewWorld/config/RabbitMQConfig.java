@@ -1,19 +1,51 @@
 package com.pweb.WarInNewWorld.config;
 
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
+
+    @Value("${WarInNewWorld.rabbitmq.queue}")
+    String queueName;
+
+    @Value("${WarInNewWorld.rabbitmq.exchange}")
+    String exchange;
+
+    @Value("${WarInNewWorld.rabbitmq.routingkey}")
+    private String routingkey;
+
     @Bean
-    public Queue createQueue() {
-        return new Queue("mailQueue");
+    Queue queue() {
+        return new Queue(queueName, false);
     }
 
     @Bean
-    public Binding createBindingBetweenQueueAndMqttTopic() {
-        return new Binding("mailQueue", Binding.DestinationType.QUEUE, "amq.topic", "bindingKey", null);
+    DirectExchange exchange() {
+        return new DirectExchange(exchange);
+    }
+
+    @Bean
+    Binding binding(Queue queue, DirectExchange exchange) {
+        return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+    }
+
+    @Bean
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
+
+    @Bean
+    public AmqpTemplate rabbitTemplate1(ConnectionFactory connectionFactory) {
+        final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);
+        rabbitTemplate.setMessageConverter(jsonMessageConverter());
+        return rabbitTemplate;
     }
 }
