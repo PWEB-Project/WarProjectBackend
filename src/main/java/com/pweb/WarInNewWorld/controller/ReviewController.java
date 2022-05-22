@@ -21,7 +21,7 @@ public class ReviewController {
     @PostMapping(path = "/admin/add-review")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:8080")
-    public ResponseEntity<?> addUser(@RequestBody Review review) {
+    public ResponseEntity<?> addReview(@RequestBody Review review) {
         try {
             reviewService.addReview(review);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);

@@ -13,7 +13,7 @@ public class Subscriber {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "pwb_subscribers_county")
+    @Column(name = "subscribers_county")
     private Integer countyId;
 
     public Long getId() {
