@@ -1,0 +1,94 @@
+name: Build new backend Docker image and deploy it in cluster. Add new release branch and update release-latest tag.
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    - uses: actions/checkout@v3
+
+    - name: Get tag name
+      id: get_tag_name
+      run: echo ::set-output name=GIT_TAG_NAME::${GITHUB_REF/refs\/tags\//}
+
+    - name: Move to release branch
+      run: |
+        git config user.name Stefania12
+        git config user.email stefania.damian1207@gmail.com
+        git checkout -b release-${{ steps.get_tag_name.outputs.GIT_TAG_NAME}}
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17.0.3'
+        distribution: 'adopt'
+
+    - name: Build with Maven
+      run: mvn package
+
+    - name: Setup gcloud
+      uses: google-github-actions/setup-gcloud@v0.6.0
+
+    - name: Push image to GCR
+      uses: RafikFarhad/push-to-gcr-github-action@v4
+      with:
+        gcloud_service_key: ${{ secrets.GCLOUD_SERVICE_KEY }}
+        registry: gcr.io
+        project_id: pweb-idp
+        image_name: backend
+        image_tag: ${{ steps.get_tag_name.outputs.GIT_TAG_NAME}}
+        dockerfile: ./Dockerfile
+
+    - name: Generate Kubernetes manifest file with updated image tag
+      uses: 1arp/create-a-file-action@0.2
+      with:
+        file: 'manifest.yaml'
+        content: |
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: backend
+            labels:
+              app: backend
+          spec:
+            selector:
+              app: backend
+            type: ClusterIP
+            ports:
+              - port: 8098
+                targetPort: 8098
+          ---
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: backend
+            labels:
+              app: backend
+          spec:
+            replicas: 1
+            selector:
+              matchLabels:
+                app: backend
+            template:
+              metadata:
+                labels:
+                  app: backend
+              spec:
+                containers:
+                - name: backend
+                  image: gcr.io/pweb-idp/backend:${{ steps.get_tag_name.outputs.GIT_TAG_NAME}}
+                  ports:
+                  - containerPort: 8098
+
+    - name: Commit and push new manifest file
+      run: |
+        git add manifest.yaml
+        git commit -m "Updated manifest file"
+        git push origin release-${{ steps.get_tag_name.outputs.GIT_TAG_NAME}}
+        
+    - name: Update release-latest tag
+      run: |
+        git tag release-latest -f
+        git push origin release-latest -f
