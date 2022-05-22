@@ -28,7 +28,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build with Maven
-        run: mvn package
+        run: mvn package -DskipTests
 
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v0.6.0
@@ -94,3 +94,11 @@ jobs:
         run: |
           git tag release-latest -f
           git push origin release-latest -f
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Portainer webhook
+        run: curl -X POST ${{ secrets.WEBHOOK_URL }}
