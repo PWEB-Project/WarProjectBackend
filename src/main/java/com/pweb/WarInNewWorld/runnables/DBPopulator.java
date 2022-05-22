@@ -13,13 +13,7 @@ public class DBPopulator implements CommandLineRunner {
     @Autowired
     NewsTypeService newsTypeService;
     @Autowired
-    UserTypeService userTypeService;
-    @Autowired
-    UserService userService;
-    @Autowired
     NewsService newsService;
-    @Autowired
-    ReviewTypeService reviewTypeService;
     @Autowired
     ReviewService reviewService;
     @Autowired
