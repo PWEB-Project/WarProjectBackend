@@ -26,6 +26,7 @@ public class BunkerController {
     @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addBunker(@RequestBody Bunker bunker) {
         try {
+            System.out.println(bunker);
             bunkerService.addBunker(bunker);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);
 
@@ -53,6 +54,7 @@ public class BunkerController {
         List<BunkerView> bunkerViews = new ArrayList<>();
 
         bunkerViews = bunkerService.getAllBunkerByCityId(id);
+        System.out.println(bunkerViews);
         return bunkerViews;
     }
 

@@ -16,7 +16,7 @@ public class SubscriberController {
     @PostMapping(path = "/admin/add-subscriber")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:8080")
-    public ResponseEntity<?> addUser(@RequestBody Subscriber subscriber) {
+    public ResponseEntity<?> addSubscriber(@RequestBody Subscriber subscriber) {
         try {
             subscriberService.addSubscriber(subscriber);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);

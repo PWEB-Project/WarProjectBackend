@@ -28,7 +28,7 @@ public class NecessityGoodsController {
     @PostMapping(path = "/admin/add-necessity-goods")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = "http://localhost:8080")
-    public ResponseEntity<?> addUser(@RequestBody NecessityGoods necessityGoods) {
+    public ResponseEntity<?> addGoods(@RequestBody NecessityGoods necessityGoods) {
         try {
             necessityGoodsService.addNecessityGoods(necessityGoods);
             return (ResponseEntity<?>) ResponseEntity.status(HttpStatus.CREATED);
