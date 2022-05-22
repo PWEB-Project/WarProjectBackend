@@ -19,6 +19,8 @@ public class GoodsTypeController {
     GoodsTypeService goodsTypeService;
 
     @PostMapping(path = "/admin/add-goods-type")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addUser(@RequestBody GoodsType goodsType) {
         try {
             goodsTypeService.addGoodsType(goodsType);
@@ -31,6 +33,7 @@ public class GoodsTypeController {
 
     @DeleteMapping(path = "/admin/delete-goods-type/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> deleteSubject(@PathVariable Long id) {
         try {
             goodsTypeService.deleteGoodsType(id);
@@ -41,6 +44,8 @@ public class GoodsTypeController {
     }
 
     @GetMapping(path = "/admin/get-goods-type")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public List<GoodsTypeView> getGoodsType(){
         List<GoodsTypeView> goodsTypeViews = new ArrayList<>();
 

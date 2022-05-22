@@ -5,10 +5,7 @@ import com.pweb.WarInNewWorld.dto.CityDTO;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,6 +20,7 @@ import java.util.List;
 public class CityController {
 
     @GetMapping(path = "/getCities/{cIso}/{sIso}")
+    @CrossOrigin(origins = "http://localhost:8080")
     List<CityDTO> cityViews(@PathVariable String cIso, @PathVariable String sIso) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 

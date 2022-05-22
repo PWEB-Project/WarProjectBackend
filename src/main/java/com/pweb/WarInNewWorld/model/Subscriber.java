@@ -1,8 +1,6 @@
 package com.pweb.WarInNewWorld.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "pwb_subscribers")
@@ -16,7 +14,7 @@ public class Subscriber {
     private String email;
 
     @Column(name = "pwb_subscribers_county")
-    private Integer county_id;
+    private Integer countyId;
 
     public Long getId() {
         return id;
@@ -34,11 +32,11 @@ public class Subscriber {
         this.email = email;
     }
 
-    public Integer getCounty_id() {
-        return county_id;
+    public Integer getCountyId() {
+        return countyId;
     }
 
-    public void setCounty_id(Integer county_id) {
-        this.county_id = county_id;
+    public void setCountyId(Integer countyId) {
+        this.countyId = countyId;
     }
 }

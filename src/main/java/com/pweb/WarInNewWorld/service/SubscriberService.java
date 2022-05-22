@@ -1,8 +1,11 @@
 package com.pweb.WarInNewWorld.service;
 
 import com.pweb.WarInNewWorld.model.Subscriber;
+import com.pweb.WarInNewWorld.projection.SubscribersView;
 import com.pweb.WarInNewWorld.repository.SubscriberRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SubscriberService {
@@ -19,5 +22,9 @@ public class SubscriberService {
 
     public void deleteSubscriber(Long subscriberId) {
         subscriberRepository.deleteById(subscriberId);
+    }
+
+    public List<SubscribersView> getSubscribersToCounty(Integer id){
+        return subscriberRepository.findAllByCountyId(id);
     }
 }

@@ -26,6 +26,8 @@ public class NecessityGoodsController {
     NecessityGoodsService necessityGoodsService;
 
     @PostMapping(path = "/admin/add-necessity-goods")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addUser(@RequestBody NecessityGoods necessityGoods) {
         try {
             necessityGoodsService.addNecessityGoods(necessityGoods);
@@ -38,6 +40,7 @@ public class NecessityGoodsController {
 
     @DeleteMapping(path = "/admin/delete-necessity-goods/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> deleteSubject(@PathVariable Long id) {
         try {
             necessityGoodsService.deleteNecessityGoods(id);
@@ -48,6 +51,8 @@ public class NecessityGoodsController {
     }
 
     @GetMapping(path = "/admin/get-necessity-goods-by-city-id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public List<NecessityGoodsView> getNecessityGoodsByCityId(@PathVariable Integer id){
         List<NecessityGoodsView> necessityGoodsViews = new ArrayList<>();
 
@@ -57,6 +62,7 @@ public class NecessityGoodsController {
 
     @PutMapping(path = "/edit")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public void editNecessityGoods(NecessityGoodsDTO necessityGoodsDTO) throws ParseException {
         NecessityGoods necessityGoods = NecessityGoodsConvertor.convertToEntity(necessityGoodsDTO);
         NecessityGoods oldNecessityGoods = necessityGoodsService.getNecessityGoodsById(necessityGoods.getId());

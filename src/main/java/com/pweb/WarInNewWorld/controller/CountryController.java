@@ -5,6 +5,7 @@ import com.pweb.WarInNewWorld.dto.CountryDTO;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,7 @@ import java.util.List;
 public class CountryController {
 
     @GetMapping(path = "/getCountries")
+    @CrossOrigin(origins = "http://localhost:8080")
     List<CountryDTO> countryViews() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 

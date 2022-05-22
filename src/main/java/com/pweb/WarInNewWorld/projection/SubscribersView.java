@@ -1,5 +1,6 @@
 package com.pweb.WarInNewWorld.projection;
 
-public interface UserNewsView {
+public interface SubscribersView {
+    Long getId();
     String getEmail();
 }

@@ -14,6 +14,8 @@ public class SubscriberController {
     SubscriberService subscriberService;
 
     @PostMapping(path = "/admin/add-subscriber")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addUser(@RequestBody Subscriber subscriber) {
         try {
             subscriberService.addSubscriber(subscriber);
@@ -26,6 +28,7 @@ public class SubscriberController {
 
     @DeleteMapping(path = "/admin/delete-subscriber/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> deleteSubject(@PathVariable Long id) {
         try {
             subscriberService.deleteSubscriber(id);

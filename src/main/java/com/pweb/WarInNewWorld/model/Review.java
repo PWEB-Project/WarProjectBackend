@@ -17,23 +17,9 @@ public class Review {
     @Column(name  = "content")
     private String content;
 
-    @Column(name  = "analysed")
-    private Boolean analysed;
-
-    @Column(name  = "is_validated")
-    private Boolean isValidated;
-
-    @ManyToOne
-    @JoinColumn(name = "review_type_id")
-    private ReviewType reviewType;
-
     @ManyToOne
     @JoinColumn(name = "whom_id", insertable = false,updatable = false)
     private News whom;
-
-    @ManyToOne
-    @JoinColumn(name = "writer_id", insertable = false,updatable = false)
-    private User writerReview;
 
     public Long getId() {
         return id;
@@ -59,43 +45,11 @@ public class Review {
         this.content = content;
     }
 
-    public Boolean getAnalysed() {
-        return analysed;
-    }
-
-    public void setAnalysed(Boolean analysed) {
-        this.analysed = analysed;
-    }
-
-    public Boolean getValidated() {
-        return isValidated;
-    }
-
-    public void setValidated(Boolean validated) {
-        isValidated = validated;
-    }
-
-    public ReviewType getReviewType() {
-        return reviewType;
-    }
-
-    public void setReviewType(ReviewType reviewType) {
-        this.reviewType = reviewType;
-    }
-
     public News getWhom() {
         return whom;
     }
 
     public void setWhom(News whom) {
         this.whom = whom;
-    }
-
-    public User getWriterReview() {
-        return writerReview;
-    }
-
-    public void setWriterReview(User writerReview) {
-        this.writerReview = writerReview;
     }
 }

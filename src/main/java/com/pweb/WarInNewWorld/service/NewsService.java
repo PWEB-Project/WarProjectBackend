@@ -1,10 +1,8 @@
 package com.pweb.WarInNewWorld.service;
 
 import com.pweb.WarInNewWorld.model.News;
-import com.pweb.WarInNewWorld.model.NewsType;
 import com.pweb.WarInNewWorld.projection.NewsDefaultView;
 import com.pweb.WarInNewWorld.repository.NewsRepository;
-import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,5 +31,13 @@ public class NewsService {
 
     public List<NewsDefaultView> getDefaultNews(){
         return newsRepository.findNewsBy();
+    }
+
+    public List<NewsDefaultView> getNews(){
+        return newsRepository.findNewsByNewsType_NewsTypeName("news");
+    }
+
+    public List<NewsDefaultView> getArticles(){
+        return newsRepository.findNewsByNewsType_NewsTypeName("article");
     }
 }

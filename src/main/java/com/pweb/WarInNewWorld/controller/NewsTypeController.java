@@ -14,6 +14,8 @@ public class NewsTypeController {
     NewsTypeService newsTypeService;
 
     @PostMapping(path = "/admin/add-news-type")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addUser(@RequestBody NewsType newsType) {
         try {
             newsTypeService.addNewsType(newsType);
@@ -26,6 +28,7 @@ public class NewsTypeController {
 
     @DeleteMapping(path = "/admin/delete-news-type/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> deleteSubject(@PathVariable Long id) {
         try {
             newsTypeService.deleteNewsType(id);

@@ -20,6 +20,7 @@ import java.util.List;
 public class CountyController {
 
     @GetMapping(path = "/getCounties/{iso}")
+    @CrossOrigin(origins = "http://localhost:8080")
     List<CountyDTO> countyViews(@PathVariable String iso) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
 

@@ -9,5 +9,5 @@ public interface NewsDefaultView {
     Integer getCountyId();
     String getBody();
     String getTitle();
-    UserNewsView getWriter();
+    String getWriter();
 }

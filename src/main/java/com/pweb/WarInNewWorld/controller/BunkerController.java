@@ -22,6 +22,8 @@ public class BunkerController {
     BunkerService bunkerService;
 
     @PostMapping(path = "/admin/add-bunker")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> addBunker(@RequestBody Bunker bunker) {
         try {
             bunkerService.addBunker(bunker);
@@ -34,6 +36,7 @@ public class BunkerController {
 
     @DeleteMapping(path = "/admin/delete-bunker/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public ResponseEntity<?> deleteBunker(@PathVariable Long id) {
         try {
             bunkerService.deleteBunker(id);
@@ -44,6 +47,8 @@ public class BunkerController {
     }
 
     @GetMapping(path = "/admin/get-bunkers-by-city-id/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public List<BunkerView> getBunkersByCityId(@PathVariable Integer id){
         List<BunkerView> bunkerViews = new ArrayList<>();
 
@@ -53,6 +58,7 @@ public class BunkerController {
 
     @PutMapping(path = "/edit")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = "http://localhost:8080")
     public void editBunker(BunkerDTO bunkerDTO) throws ParseException {
         Bunker bunker = BunkerConvertor.convertToEntity(bunkerDTO);
         Bunker oldBunker = bunkerService.getBunkerById(bunker.getId());

@@ -14,5 +14,6 @@ import java.util.Set;
 public interface NewsRepository extends JpaRepository<News, Long> {
     List<NewsDefaultView> findNewsBy();
     List<NewsDefaultView> findNewsByCountyIdAndNewsType_Id(Integer countryId, Long newsTypeId);
+    List<NewsDefaultView> findNewsByNewsType_NewsTypeName(String name);
 //    Set<NewsDefaultView> findAllByCitiesInAndIsValidatedAndNewsType(List<City> cities, Boolean isValidated, NewsType newsType);
 }
