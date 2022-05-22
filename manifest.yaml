@@ -30,6 +30,6 @@ spec:
     spec:
       containers:
       - name: backend
-        image: gcr.io/pweb-idp/backend:v0.0.1
+        image: gcr.io/pweb-idp/backend:v0.1.0
         ports:
         - containerPort: 8098
