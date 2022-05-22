@@ -1,10 +1,13 @@
 package com.pweb.WarInNewWorld.dto;
 
-public class BunkerDTO {
+import com.pweb.WarInNewWorld.model.GoodsType;
+
+public class NecessityGoodsDTO {
     Long id;
     String address;
     Integer maximCapacity;
     Integer currentCapacity;
+    Long goodsTypeId;
 
     public Long getId() {
         return id;
@@ -36,5 +39,13 @@ public class BunkerDTO {
 
     public void setCurrentCapacity(Integer currentCapacity) {
         this.currentCapacity = currentCapacity;
+    }
+
+    public Long getGoodsTypeId() {
+        return goodsTypeId;
+    }
+
+    public void setGoodsTypeId(Long goodsTypeId) {
+        this.goodsTypeId = goodsTypeId;
     }
 }

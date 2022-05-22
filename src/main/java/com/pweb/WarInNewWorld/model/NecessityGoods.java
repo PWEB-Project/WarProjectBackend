@@ -4,27 +4,31 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "pwb_bunkers")
-public class Bunker {
+@Table(name = "pwb_necessity_goods")
+public class NecessityGoods {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name  = "bunker_id")
+    @Column(name  = "necessity_good_id")
     private Long id;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "maxim_capacity")
-    private Integer maximCapacity;
-
-    @Column(name = "current_capacity")
-    private Integer currentCapacity;
-
-    @Column(name = "last_update")
-    private Date lastUpdate;
 
     @Column(name = "city_id")
     private Integer cityId;
+
+    @Column(name  = "address")
+    private String address;
+
+    @Column(name  = "maxim_capacity")
+    private Integer maximCapacity;
+
+    @Column(name  = "current_capacity")
+    private Integer currentCapacity;
+
+    @Column(name  = "last_update")
+    private Date lastUpdate;
+
+    @ManyToOne
+    @JoinColumn(name = "goods_type_id")
+    private GoodsType goodsType;
 
     public Long getId() {
         return id;
@@ -64,6 +68,14 @@ public class Bunker {
 
     public void setLastUpdate(Date lastUpdate) {
         this.lastUpdate = lastUpdate;
+    }
+
+    public GoodsType getGoodsType() {
+        return goodsType;
+    }
+
+    public void setGoodsType(GoodsType goodsType) {
+        this.goodsType = goodsType;
     }
 
     public Integer getCityId() {
