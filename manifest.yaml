@@ -30,6 +30,33 @@ spec:
     spec:
       containers:
       - name: backend
-        image: gcr.io/pweb-idp/backend:v0.0.1
+        image: gcr.io/pweb-idp/backend:v0.1.1
         ports:
         - containerPort: 8098
+        env:
+        - name: PG_HOST
+          value: "postgresql"
+        - name: PG_PORT
+          value: "5432"
+        - name: PG_DATABASE
+          value: "warproject"
+        - name: PG_USERNAME
+          value: "admin"
+        - name: PG_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgresql-credentials
+              key: password
+              optional: false
+        - name: RABBITMQ_HOST
+          value: "rabbitmq"
+        - name: RABBITMQ_PORT
+          value: "5672"
+        - name: RABBITMQ_USERNAME
+          value: "admin"
+        - name: RABBITMQ_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: rabbitmq-credentials
+              key: rabbitmq-password
+              optional: false
